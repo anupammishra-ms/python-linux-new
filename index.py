@@ -1,6 +1,5 @@
 import bottle
 from bottle import route, run, Response, template
-from pyinstrument import Profiler
 import json
 import image
 
@@ -12,11 +11,7 @@ def call_service():
 def index():
     """Home page"""
     title = "Image Processor App"
-	profiler = Profiler()
-profiler.start()
     call_service()
-profiler.stop()
-print(profiler.output_text())
     return template('index.tpl',data="Request completed!", title=title)
 
 if __name__ == '__main__':
