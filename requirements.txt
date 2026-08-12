@@ -1,5 +1,5 @@
 scikit-image==0.26.0
 numpy==2.5.1
 Bottle==0.13.4
-matplotlib==3.10.9
+matplotlib==3.11.1
 pyinstrument
