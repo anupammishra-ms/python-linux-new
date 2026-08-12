@@ -1,25 +1,20 @@
 import bottle
-from bottle import route, run, Response, template
-import json
+from bottle import route, run, template
 import image
-from pyinstrument import Profiler
+
 
 def call_service():
     directoryName = 'photos'
     image.process(directoryName)
 
+# Process images once when application starts
+print("Starting image processing...")
+call_service()
+print("Image processing completed.")
+
 @route('/')
 def index():
     """Home page"""
-
-    profiler = Profiler()
-    profiler.start()
-
-    call_service()
-
-    profiler.stop()
-    print(profiler.output_text())
-
     title = "Image Processor App"
     return template(
         'index.tpl',
