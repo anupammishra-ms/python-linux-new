@@ -2,6 +2,7 @@ import bottle
 from bottle import route, run, Response, template
 import json
 import image
+from pyinstrument import Profiler
 
 def call_service():
     directoryName = 'photos'
@@ -10,11 +11,23 @@ def call_service():
 @route('/')
 def index():
     """Home page"""
-    title = "Image Processor App"
+
+    profiler = Profiler()
+    profiler.start()
+
     call_service()
-    return template('index.tpl',data="Request completed!", title=title)
+
+    profiler.stop()
+    print(profiler.output_text())
+
+    title = "Image Processor App"
+    return template(
+        'index.tpl',
+        data="Request completed!",
+        title=title
+    )
 
 if __name__ == '__main__':
-	run(host='0.0.0.0', port=8000, debug=False, reloader=True)
-	
+    run(host='0.0.0.0', port=8000, debug=False, reloader=True)
+
 app = bottle.default_app()
