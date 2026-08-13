@@ -63,4 +63,4 @@ jobs:
         with:
           app-name: 'appservicespecialistosspythonlinux24uxdg6cvvmfjq'
           slot-name: 'Production'
-          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_E85A2882D12842018537D3090C41BF1A }}
+          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_A12E6DD336F04ED19F9080E5E8ADE56C }}
